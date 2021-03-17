@@ -1,4 +1,5 @@
 export interface FetchError {
-    code: string
+    status: string
     message: string
+    text?: string
 }

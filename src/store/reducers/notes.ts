@@ -12,7 +12,7 @@ export interface NotesState {
 const initialState: NotesState = {
     notes: [],
     loading: false,
-    error: { message: '', code: '' },
+    error: { status: '', message: '' },
 }
 
 const reducer = (state = initialState, action: any):NotesState => {
@@ -20,17 +20,17 @@ const reducer = (state = initialState, action: any):NotesState => {
         case actionTypes.FETCH_NOTES_INIT:
             return {
                 ...state,
-                notes: [], loading: false, error: { message: '', code: '' } 
+                notes: [], loading: false, error: { status: '', message: '' } 
             }
         case actionTypes.FETCH_NOTES_START:
             return {
                 ...state,
-                notes: [], loading: true, error: { message: '', code: '' } 
+                notes: [], loading: true, error: { status: '', message: '' } 
             }
         case actionTypes.FETCH_NOTES_SUCCESS:
             return {
                 ...state,
-                notes: action.payload.notes, loading: false, error: { message: '', code: '' } 
+                notes: action.payload.notes, loading: false, error: { status: '', message: '' } 
             }
         case actionTypes.FETCH_NOTES_FAILED:
             return {

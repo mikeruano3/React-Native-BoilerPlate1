@@ -42,6 +42,6 @@ export const fetchNotes = (token: string): AppThunk<any> => async dispatch => {
         }
         dispatch(fetchNotesSuccess(fetchedNotes))
     } catch (error: any) {
-        dispatch(fetchNotesFail({ message: error.message, code: error.code }))
+        dispatch(fetchNotesFail({ message: error?.response?.data?.error, status: error?.response?.status }))
     }
 }
