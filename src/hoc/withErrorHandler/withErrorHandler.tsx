@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { AxiosInstance } from 'axios'
 import { FetchError } from '../../dataDefinitions/fetchError'
-import { Text } from 'react-native'
+import { SafeAreaView, Text, StyleSheet } from 'react-native'
 
 const withErrorHandler = (WrapperComponent:any, httpClient:AxiosInstance) => {
     return (props:any) => {
@@ -35,6 +35,7 @@ const withErrorHandler = (WrapperComponent:any, httpClient:AxiosInstance) => {
 
         return (
                 <>
+                    <WrapperComponent {...props} />
                     {/**
                      <Modal 
                         show={error}
@@ -42,8 +43,9 @@ const withErrorHandler = (WrapperComponent:any, httpClient:AxiosInstance) => {
                         {error && error.message}
                     </Modal>
                      **/}
-                     <Text>There's been an error: {JSON.stringify(error)}</Text>
-                    <WrapperComponent {...props} />
+                     { error && 
+                        <Text>There's been an error: {JSON.stringify(error)}</Text>
+                     }
                 </>
         )
     }

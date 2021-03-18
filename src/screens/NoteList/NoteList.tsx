@@ -29,29 +29,31 @@ const NoteList = (props:any) => {
         <Item {...item} />
     )
 
-    return  <SafeAreaView style={styles.container}>
-        <FlatList
-            data={notes}
-            renderItem={renderItem}
-            keyExtractor={item => item.id}
-        />
-    </SafeAreaView>
+    return   <SafeAreaView style={styles.container}>
+      <View style={styles.view}>
+        <Text style={{ color: 'white', fontSize: 22 }}>Notes</Text>
+        <View style={{ flex: 1, marginTop: 8 }}>
+          <FlatList
+              data={notes}
+              renderItem={renderItem}
+              keyExtractor={item => item.id}
+          />
+        </View>
+      </View>
+  </SafeAreaView>
 }
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      marginTop: (StatusBar.currentHeight || 0),
-    },
-    item: {
-      backgroundColor: '#f9c2ff',
-      padding: 20,
-      marginVertical: 8,
-      marginHorizontal: 16,
-    },
-    title: {
-      fontSize: 32,
-    },
-  });
+  container: {
+    flex: 1, 
+    marginTop: (StatusBar.currentHeight || 0),
+    alignItems: 'center',
+    backgroundColor: '#1E1B26'
+  },
+  view: {
+    flex: 1, 
+    paddingHorizontal: 16
+  }
+})
 
 export default (withErrorHandler(NoteList, axios))

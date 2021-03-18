@@ -8,6 +8,7 @@ import { HomeComponent } from './src/screens/Home/Home'
 import { PersistGate } from 'redux-persist/integration/react'
 import { store, persistor } from './src/store/configureStore'
 //const store = createStore(rootReducer, compose(applyMiddleware(thunk)))
+import RootNavigator from './src/navigation/RootNavigator'
 
 export default function App() {
 
@@ -15,7 +16,7 @@ export default function App() {
     <Provider store={store} >
       {/*<StatusBar style="auto" />*/}
       <PersistGate loading={null} persistor={persistor}>
-        <HomeComponent />
+        <RootNavigator />
       </PersistGate>
     </Provider>
   )
